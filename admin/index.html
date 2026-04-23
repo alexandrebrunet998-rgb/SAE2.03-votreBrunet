@@ -11,11 +11,23 @@
 
     <script type="module">
       import { Log } from "./component/Log/script.js";
+      import {NewMenuForm} from './component/NewMenuForm/script.js';
+      import {DataMenu} from './data/dataMenu.js';
+
 
       window.C = {};
 
+       C.handlerUpdate = async function(){
+            
+          let form = document.querySelector('.addMenu__form');
+            let fd = new FormData(form);
+            let res = await DataMenu.update(fd);
+            V.renderLog(res);
+        }
+
       C.start = function () {
         V.renderLog("Démarrage de l'application");
+        V.renderMenu("C.handlerUpdate()");
       };
 
       window.V = {};
@@ -24,6 +36,10 @@
         let content = document.querySelector("#log");
         content.innerHTML = Log.format(txt);
       };
+       V.renderMenu = function(handler){
+            let content = document.querySelector('#addMenu');
+            content.innerHTML = NewMenuForm.format(handler);
+        };
 
       C.start();
     </script>

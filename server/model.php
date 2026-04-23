@@ -31,3 +31,23 @@ function getAllMovies(){
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $res; // Retourne les résultats
 }
+function updateMenu($j, $e, $p, $d,$a, $b, $c, $f,){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
+    // Requête SQL de mise à jour du menu avec des paramètres
+    $sql = "INSERT INTO Movie ( name, year,lenght,description,director,id_category,image,trailer,min_age)
+            VALUES (:name, :year,:lenght,:description,:director,:id_category,:image,:trailer,:min_age)";
+    // Prépare la requête SQL
+    $stmt = $cnx->prepare($sql);
+    // Lie les paramètres aux valeurs
+    $stmt->bindParam(':name', $e);
+    $stmt->bindParam(':year', $p);
+    $stmt->bindParam(':lenght', $d);
+    $stmt->bindParam(':description', $j);
+    $stmt->bindParam(':director', $a);
+    $stmt->bindParam(':id_category', $b);
+    $stmt->bindParam(':image', $c);
+    $stmt->bindParam(':min_age', $f);
+    $stmt->execute();
+    $res = $stmt->rowCount(); 
+    return $res; 
+}
