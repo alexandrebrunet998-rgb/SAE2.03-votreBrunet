@@ -1,0 +1,44 @@
+<div class="movieDetail">
+    <h1 class="movieDetail__title">{{title}}</h1>
+
+    <div class="movieDetail__content">
+        <div class="movieDetail__poster">
+            <img class="movieDetail__img" src="{{img}}" alt="Affiche de {{title}}">
+        </div>
+
+        <div class="movieDetail__info">
+            <p class="movieDetail__item">
+                <strong class="movieDetail__label">Réalisateur :</strong> 
+                <span class="movieDetail__value">{{director}}</span>
+            </p>
+            <p class="movieDetail__item">
+                <strong class="movieDetail__label">Année :</strong> 
+                <span class="movieDetail__value">{{year}}</span>
+            </p>
+            <p class="movieDetail__item">
+                <strong class="movieDetail__label">Catégorie :</strong> 
+                <span class="movieDetail__value">{{category}}</span>
+            </p>
+            <p class="movieDetail__item">
+                <strong class="movieDetail__label">Âge :</strong> 
+                <span class="movieDetail__value">{{min_age}}</span>
+            </p>
+            
+            <div class="movieDetail__synopsis">
+                <h3 class="movieDetail__subtitle">Synopsis</h3>
+                <p class="movieDetail__text">{{description}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="movieDetail__trailer">
+        <h3 class="movieDetail__subtitle">Bande-annonce</h3>
+        <div class="movieDetail__video-container">
+            <iframe 
+                class="movieDetail__iframe"
+                src="{{trailer}}" 
+                frameborder="0" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>

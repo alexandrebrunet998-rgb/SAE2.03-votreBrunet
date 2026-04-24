@@ -16,6 +16,7 @@
       import { NavBar } from "./component/NavBar/script.js";
       import { Movie } from "./component/Movie/script.js";
       import { DataMovie } from "./data/dataMovie.js";
+      import { DataMovie } from "./data/movieDetail.js";
 
       let film = await DataMovie.requestMovies();
       // Controleur
@@ -52,6 +53,11 @@
       V.renderMovie = function (Data) {
         let content = document.querySelector("#content");
         content.innerHTML = Movie.format(Data);
+      };
+
+      V.rendermovieDetail = function (Data) {
+        let content = document.querySelector("#content");
+        content.innerHTML = movieDetail.format(Data);
       };
 
       C.start(); // Démarre l'application
