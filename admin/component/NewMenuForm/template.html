@@ -3,33 +3,33 @@
     
     <form class="addMenu__form">
         
-        <select required name="categorie">
+        <select class="addMenu__btn" required name="id_category">
             <option value="" disabled selected>Choisir une catégorie</option>
-            <option value="drame">Drame</option>
-            <option value="aventure">Aventure</option>
-            <option value="animation">Animation</option>
-            <option value="sci-fi">Science-Fiction</option>
+            <option value="1">Drame</option>
+            <option value="2">Aventure</option>
+            <option value="3">Animation</option>
+            <option value="4">Science-Fiction</option>
         </select>
 
-        <input required type="text" name="titre" placeholder="Titre du film">
-        <input required type="text" name="realisateur" placeholder="Réalisateur" pattern="[^0-9]*" title="Les chiffres ne sont pas autorisés pour le nom du réalisateur">
+        <input class="addMenu__btn" required type="text" name="name" placeholder="Titre du film">
+        <input class="addMenu__btn" required type="text" name="director" placeholder="Réalisateur" pattern="[^0-9]*" title="Les chiffres ne sont pas autorisés pour le nom du réalisateur">
 
-        <input required type="number" name="annee" placeholder="Année de sortie (ex: 2024)" min="1895" max="2026">
-        <input required type="number" name="duree" placeholder="Durée en minutes" min="1">
+        <input class="addMenu__btn" required type="number" name="year" placeholder="Année de sortie (ex: 2024)" min="1895" max="2026">
+        <input class="addMenu__btn" required type="number" name="length" placeholder="Durée en minutes" min="1">
 
-        <textarea required name="description" placeholder="Synopsis ou description du film" rows="3"></textarea>
+        <textarea class="addMenu__btn" required name="description" placeholder="Synopsis ou description du film" rows="3"></textarea>
 
-        <input required type="text" name="affiche" placeholder="Nom du fichier de l'affiche (ex: movie.jpg)">
-        <input required type="url" name="trailer" placeholder="URL du trailer (https://...)">
+        <input class="addMenu__btn" required type="text" name="image" placeholder="Nom du fichier de l'affiche (ex: movie.jpg)">
+        <input class="addMenu__btn" required type="url" name="trailer" placeholder="URL du trailer (https://...)">
 
-        <select required name="age_restriction">
+        <select class="addMenu__btn" required name="min_age">
             <option value="0">Public cible : Tout public</option>
             <option value="12">Interdit aux moins de 12 ans</option>
             <option value="16">Interdit aux moins de 16 ans</option>
             <option value="18">Interdit aux moins de 18 ans</option>
         </select>
 
-        <input onclick="{{handler}}" type="button" value="Ajouter au catalogue" name="todo">
+        <input class="addMenu__add" onclick="{{handler}}" type="button" value="Ajouter au catalogue" name="todo">
 
     </form>
 </div>

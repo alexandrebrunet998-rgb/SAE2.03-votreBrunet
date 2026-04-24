@@ -1,6 +1,6 @@
 .addMenu {
   width: 30rem;
-  margin: 0 auto; 
+  margin: 0 auto;
 
   .addMenu__title {
     margin-bottom: 0.2rem;
@@ -10,63 +10,61 @@
   .addMenu__form {
     display: flex;
     flex-direction: column;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
     padding: 1.5rem;
 
-    /* Style pour les select */
-    select {
-      font-size: medium;
-      border-style: none;
-      margin-top: 0.8rem;
-      padding: 0.5rem; 
-    }
-
-   
-    input, textarea {
+    
+    .addMenu__btn {
       margin-top: 0.8rem;
       font-size: medium;
-      border-style: none;
+      background-color: #fff; 
+      
+      
+      border: 1px solid #000; 
+      
       display: inline-block;
-      height: 2rem;
-      padding: 0 0.5rem;
+      padding: 0.5rem;
+      box-sizing: border-box; 
     }
 
     
-    textarea {
+    textarea.addMenu__btn {
       height: auto;
-      min-height: 5rem;
+      min-height: 4rem;
+      font-family: inherit;
     }
 
-    /* Bouton spécifique */
-    input[type="button"] {
-      background-color: rgb(113, 91, 69);
+    
+    .addMenu__add {
+      background-color: rgb(105, 105, 105);
       color: #fff;
+      border: none; 
       cursor: pointer;
-      height: 3rem; 
+      height: 3rem;
       margin-top: 1.2rem;
-      
+      font-weight: bold;
+
       &:hover {
-        filter: brightness(1.2);
+        background-color: black;
       }
     }
   }
 
   
   @media (min-width: 48rem) {
+    width: 60rem;
     padding-top: 5rem;
 
     .addMenu__form {
-      padding: 3rem; 
-      
-      select, input, textarea {
+      padding: 3rem;
+
+      .addMenu__btn {
         margin-top: 1.5rem;
-        font-size: 1.5rem; 
-        height: 3.5rem;    
+        font-size: 1.5rem;
+        padding: 1rem;
       }
 
-      input[type="button"] {
+      .addMenu__add {
         height: 4.5rem;
         font-size: 1.8rem;
       }

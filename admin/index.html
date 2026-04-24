@@ -9,6 +9,8 @@
   <body>
     <section id="log"></section>
 
+    <section id="content"></section>
+
     <script type="module">
       import { Log } from "./component/Log/script.js";
       import {NewMenuForm} from './component/NewMenuForm/script.js';
@@ -27,7 +29,7 @@
 
       C.start = function () {
         V.renderLog("Démarrage de l'application");
-        V.renderMenu("C.handlerUpdate()");
+        V.renderMovies("C.handlerUpdate()");
       };
 
       window.V = {};
@@ -36,8 +38,8 @@
         let content = document.querySelector("#log");
         content.innerHTML = Log.format(txt);
       };
-       V.renderMenu = function(handler){
-            let content = document.querySelector('#addMenu');
+       V.renderMovies = function(handler){
+            let content = document.querySelector('#content');
             content.innerHTML = NewMenuForm.format(handler);
         };
 
