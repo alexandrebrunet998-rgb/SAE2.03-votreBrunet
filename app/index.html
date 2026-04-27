@@ -16,7 +16,7 @@
       import { NavBar } from "./component/NavBar/script.js";
       import { Movie } from "./component/Movie/script.js";
       import { DataMovie } from "./data/dataMovie.js";
-      import { DataMovie } from "./data/movieDetail.js";
+      import { movieDetail } from "./component/movieDetail/script.js";
 
       let film = await DataMovie.requestMovies();
       // Controleur
@@ -25,9 +25,7 @@
       window.C = {};
 
       C.handlerAbout = function () {
-        alert(
-          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
-        );
+        V.renderMovie(film);
       };
 
       C.start = function () {
@@ -35,6 +33,10 @@
         V.renderMovie(film);
       };
 
+    C.handlerDetail = async function (id){
+      let detail = await DataMovie.requestMovieDetails(id);
+      V.rendermovieDetail(detail);
+    }
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
 

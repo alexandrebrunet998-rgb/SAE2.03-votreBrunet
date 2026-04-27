@@ -16,6 +16,7 @@ Movie.format = function (data) {
  let menuHTML = "";
   for (let menu of data) {
     let li = templateLi;
+    li = li.replaceAll("{{id}}", menu.id);
     li = li.replaceAll("{{img}}", "../server/images/" + menu.image);
     li = li.replaceAll("{{title}}", menu.name);
 

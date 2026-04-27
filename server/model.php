@@ -52,3 +52,13 @@ function updateMovies($name, $year, $length, $description, $director, $id_catego
     $res = $stmt->rowCount(); 
     return $res; 
 }
+
+function getMovieDetail($id){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "SELECT * FROM Movie WHERE id = :id";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_OBJ); 
+}
+

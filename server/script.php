@@ -68,6 +68,10 @@ if ( isset($_REQUEST['todo']) ){
       $data = updateController();
       break;
 
+      case 'readMovieDetail':
+      $data = readMovieDetailController();
+      break;
+
 
     default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée
       echo json_encode('[error] Unknown todo value');
@@ -110,7 +114,6 @@ if ( isset($_REQUEST['todo']) ){
  * HTTP 404 (Not found), indiquant que la requête HTTP ne correspond à rien.
  */
 http_response_code(404); // 404 == "Not found"
-
 
 
 ?>
