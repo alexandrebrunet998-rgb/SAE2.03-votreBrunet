@@ -5,4 +5,6 @@
 @import "./utilities.css" layer(utilities);
 
 @import "../component/Log/style.css" layer(components);
+@import "../component/Profil/style.css" layer(components);
 @import "../component/NewMenuForm/style.css" layer(components);
+

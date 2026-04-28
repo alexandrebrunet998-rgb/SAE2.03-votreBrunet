@@ -1,72 +1,64 @@
-.addMenu {
-  width: 30rem;
+.Profil {
+  width: 30rem; 
   margin: 0 auto;
 
-  .addMenu__title {
-    margin-bottom: 0.2rem;
+  .Profil__title {
+    margin-bottom: 0.5rem;
     color: #fff;
+    font-family: sans-serif;
   }
 
-  .addMenu__form {
+  .Profil__form {
     display: flex;
     flex-direction: column;
     border: 1px solid rgb(255, 255, 255);
     padding: 1.5rem;
+    background-color: #1f1f1f; 
 
-    
-    .addMenu__btn {
+    .Profil__input, 
+    .Profil__select {
       margin-top: 0.8rem;
-      font-size: medium;
-      background-color: #fff; 
-      
-      
-      border: 1px solid #000; 
-      
-      display: inline-block;
+      font-size: 1rem;
+      background-color: #fff;
+      border: 1px solid #000;
       padding: 0.5rem;
-      box-sizing: border-box; 
+      box-sizing: border-box;
+      width: 100%;
     }
+  }
 
-    
-    textarea.addMenu__btn {
-      height: auto;
-      min-height: 4rem;
-      font-family: inherit;
-    }
-
-    
-    .addMenu__add {
+    .Profil__btn {
       background-color: rgb(105, 105, 105);
       color: #fff;
-      border: none; 
+      border: none;
       cursor: pointer;
       height: 3rem;
-      margin-top: 1.2rem;
+      margin-top: 1.5rem;
       font-weight: bold;
+      transition: background-color 0.3s;
 
       &:hover {
-        background-color: black;
+        background-color: #e50914; // Un rouge au hover pour le style
       }
     }
   }
 
-  
-  @media (min-width: 48rem) {
-    width: 60rem;
-    padding-top: 5rem;
-
-    .addMenu__form {
+  @media (min-width: 48rem) { /
+    
+    .Profil__form {
       padding: 3rem;
 
-      .addMenu__btn {
+      .Profil__input, 
+      .Profil__select {
         margin-top: 1.5rem;
         font-size: 1.5rem;
         padding: 1rem;
       }
 
-      .addMenu__add {
+      .Profil__btn {
         height: 4.5rem;
         font-size: 1.8rem;
+        margin-top: 2rem;
       }
     }
   }

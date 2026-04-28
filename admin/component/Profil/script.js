@@ -4,9 +4,9 @@ let templateFile = await fetch('./component/Profil/template.html');
 let template = await templateFile.text();
 
 
-let NewMenuForm = {};
+let Profil = {};
 
-NewMenuForm.format = function(handler){
+Profil.format = function(handler){
     let html= template;
 
     html = html.replaceAll('{{handler}}', handler);
@@ -15,6 +15,6 @@ NewMenuForm.format = function(handler){
 
 
 
-export {NewMenuForm};
+export {Profil};
 
 

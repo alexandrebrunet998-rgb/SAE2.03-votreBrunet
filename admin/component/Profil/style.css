@@ -1,73 +1,60 @@
-.addMenu {
-  width: 30rem;
-  margin: 0 auto;
+/* --- Container Principal --- */
+.Profil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 1.25rem; /* 40px 20px */
+  background-color: #141414;
+  min-height: 12.5rem; /* 200px */
+}
 
-  .addMenu__title {
-    margin-bottom: 0.2rem;
-    color: #fff;
-  }
+.Profil__form {
+  background-color: #1f1f1f;
+  padding: 1.875rem; /* 30px */
+  border-radius: 0.25rem; /* 4px */
+  width: 100%;
+  max-width: 25rem; /* 400px */
+  box-shadow: 0 0.625rem 1.5625rem rgba(0, 0, 0, 0.5); /* 0 10px 25px */
+  border: 0.0625rem solid #333333; /* 1px */
+}
 
-  .addMenu__form {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgb(255, 255, 255);
-    padding: 1.5rem;
+.Profil__title {
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5rem; /* 24px */
+  margin-bottom: 1.5rem; /* 24px */
+  text-align: center;
+}
 
-    
-    .addMenu__btn {
-      margin-top: 0.8rem;
-      font-size: medium;
-      background-color: #fff; 
-      
-      
-      border: 1px solid #000; 
-      
-      display: inline-block;
-      padding: 0.5rem;
-      box-sizing: border-box; 
-    }
+.Profil__field {
+  margin-bottom: 1.125rem; /* 18px */
+}
 
-    
-    textarea.addMenu__btn {
-      height: auto;
-      min-height: 4rem;
-      font-family: inherit;
-    }
+.Profil__input, 
+.Profil__select {
+  width: 100%;
+  padding: 0.75rem 0.9375rem; /* 12px 15px */
+  background-color: #333333;
+  border: 0.0625rem solid #444444; /* 1px */
+  border-radius: 0.25rem; /* 4px */
+  color: #ffffff;
+  font-size: 1rem; /* 16px */
+  box-sizing: border-box;
+  outline: none;
+}
 
-    
-    .addMenu__add {
-      background-color: rgb(105, 105, 105);
-      color: #fff;
-      border: none; 
-      cursor: pointer;
-      height: 3rem;
-      margin-top: 1.2rem;
-      font-weight: bold;
+.Profil__input::placeholder {
+  color: #8c8c8c;
+}
 
-      &:hover {
-        background-color: black;
-      }
-    }
-  }
+.Profil__input:focus, 
+.Profil__select:focus {
+  border-color: #e50914;
+  background-color: #404040;
+}
 
-  
-  @media (min-width: 48rem) {
-    width: 60rem;
-    padding-top: 5rem;
-
-    .addMenu__form {
-      padding: 3rem;
-
-      .addMenu__btn {
-        margin-top: 1.5rem;
-        font-size: 1.5rem;
-        padding: 1rem;
-      }
-
-      .addMenu__add {
-        height: 4.5rem;
-        font-size: 1.8rem;
-      }
-    }
-  }
+.Profil__select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
 }

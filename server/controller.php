@@ -33,7 +33,22 @@ function updateController(){
     } else {
         return false;
     }
-} // <--- L'ACCOLADE ÉTAIT TOUT EN BAS, ELLE DOIT ÊTRE ICI !
+}
+function profilController(){
+    if(!isset($_REQUEST['nom'])) return "Nom manquant";
+
+    $nom = $_REQUEST['nom'];
+    $avatar = $_REQUEST['avatar'] ?? ""; 
+    $age_restriction = $_REQUEST['age']; 
+    
+    $ok = updateprofil($nom, $avatar, $age_restriction);
+  
+    if ($ok != 0){
+        return "Le profil $nom a été ajouté"; 
+    } else {
+        return false;
+    }
+}
 
 function readMovieDetailController(){
     if(!isset($_REQUEST['id'])) {

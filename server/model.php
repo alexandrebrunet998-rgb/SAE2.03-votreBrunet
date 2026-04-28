@@ -18,6 +18,8 @@ define("DBLOGIN", "brunet92");
 define("DBPWD", "brunet92");
 
 
+
+
 function getAllMovies(){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
@@ -50,6 +52,24 @@ function updateMovies($name, $year, $length, $description, $director, $id_catego
     $stmt->execute();
     $res = $stmt->rowCount(); 
     return $res; 
+}
+
+function updateprofil($nom, $avatar, $age_restriction){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
+    
+    // Correction : On retire les virgules devant les noms de colonnes et le champ ID 
+    // (si l'ID est en auto-increment dans ta base, ne l'insère pas manuellement)
+    $sql = "INSERT INTO PROFILE (nom, avatar, age_restriction)
+            VALUES (:nom, :avatar, :age_restriction)";
+    
+    $stmt = $cnx->prepare($sql);
+    
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':avatar', $avatar);
+    $stmt->bindParam(':age_restriction', $age_restriction);
+    
+    $stmt->execute();
+    return $stmt->rowCount(); 
 }
 
 function getMovieDetail($id){
