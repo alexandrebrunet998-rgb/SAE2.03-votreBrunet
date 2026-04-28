@@ -1,0 +1,73 @@
+.addMenu {
+  width: 30rem;
+  margin: 0 auto;
+
+  .addMenu__title {
+    margin-bottom: 0.2rem;
+    color: #fff;
+  }
+
+  .addMenu__form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 1.5rem;
+
+    
+    .addMenu__btn {
+      margin-top: 0.8rem;
+      font-size: medium;
+      background-color: #fff; 
+      
+      
+      border: 1px solid #000; 
+      
+      display: inline-block;
+      padding: 0.5rem;
+      box-sizing: border-box; 
+    }
+
+    
+    textarea.addMenu__btn {
+      height: auto;
+      min-height: 4rem;
+      font-family: inherit;
+    }
+
+    
+    .addMenu__add {
+      background-color: rgb(105, 105, 105);
+      color: #fff;
+      border: none; 
+      cursor: pointer;
+      height: 3rem;
+      margin-top: 1.2rem;
+      font-weight: bold;
+
+      &:hover {
+        background-color: black;
+      }
+    }
+  }
+
+  
+  @media (min-width: 48rem) {
+    width: 60rem;
+    padding-top: 5rem;
+
+    .addMenu__form {
+      padding: 3rem;
+
+      .addMenu__btn {
+        margin-top: 1.5rem;
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
+
+      .addMenu__add {
+        height: 4.5rem;
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

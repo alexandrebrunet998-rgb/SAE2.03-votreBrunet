@@ -3,7 +3,16 @@ require("model.php");
 
 function readMoviesController(){
     $movies = getAllMovies();
-    return $movies;
+    $category = [];
+
+    foreach($movies as $mvs){
+        $allmovie = $mvs->category_name;
+        if(!isset($category[$allmovie])){
+            $category[$allmovie] = [];
+        }
+        $category[$allmovie][] = $mvs; 
+    }
+    return $category;
 }
 
 function updateController(){
@@ -33,4 +42,8 @@ function readMovieDetailController(){
     $id = $_REQUEST['id'];
     $movie = getMovieDetail($id);
     return $movie;
+}
+
+function readCategoryController(){
+    return getCategory();
 }

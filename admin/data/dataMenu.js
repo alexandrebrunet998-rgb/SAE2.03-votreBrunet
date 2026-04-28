@@ -46,6 +46,13 @@ DataMenu.update = async function (fdata) {
     return data;
 }
 
+
+DataMenu.requestCategory = async function (){
+     let answer = await fetch(HOST_URL + "/server/script.php?todo=readCategory");
+     let data = await answer.json();
+     return data;
+}
+
 export {DataMenu};
 
 
