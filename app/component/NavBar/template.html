@@ -1,5 +1,13 @@
 <nav class="navbar font-sans">
   <ul class="navbar__list">
-    <li class="navbar__item" onclick="{{hAbout}}">Menu</li>
+    <li class="navbar__item-home" ><a href="#" onclick="C.start();">Home</a></li>
+    <li class="navbar__item-deconnexion" onclick="{{hAbout}}">Déconnexion</li>
+    <li class="navbar__item">
+      <select id="navbar__select">
+        <option class="navbar__choisir" value="">-- Choisir un profil --</option>
+        {{navbar__profils}}
+      </select>
+      <button class="navbar__btn" onclick="{{hProfil}}">choisir</button>
+    </li>
   </ul>
 </nav>

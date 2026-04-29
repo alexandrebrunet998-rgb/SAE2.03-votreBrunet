@@ -80,6 +80,13 @@ if ( isset($_REQUEST['todo']) ){
       $data = readCategoryController();
       break;
 
+      case 'readCategory':
+      $data = readCategoryController();
+      break;
+
+      case 'readProfils':
+      $data = readPROFILEController();
+      break;
 
 
     default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée

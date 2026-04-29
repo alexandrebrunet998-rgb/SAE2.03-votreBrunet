@@ -1,63 +1,87 @@
-.Profil {
+.addMenu {
   width: 30rem; 
   margin: 0 auto;
 
-  .Profil__title {
-    margin-bottom: 0.5rem;
-    color: #fff;
-    font-family: sans-serif;
+  .addMenu__title {
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.4rem;
   }
 
-  .Profil__form {
+  .addMenu__form {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgb(255, 255, 255);
+    border: 0.0625rem solid #ffffff;
     padding: 1.5rem;
     background-color: #1f1f1f; 
-
-    .Profil__input, 
-    .Profil__select {
+    .addMenu__btn {
       margin-top: 0.8rem;
       font-size: 1rem;
-      background-color: #fff;
-      border: 1px solid #000;
+      background-color: #ffffff;
+      color: #000000;
+      border: 0.0625rem solid #000000;
       padding: 0.5rem;
       box-sizing: border-box;
       width: 100%;
-    }
-  }
+      outline: none;
 
-    .Profil__btn {
-      background-color: rgb(105, 105, 105);
-      color: #fff;
+      &:focus {
+        border-color: #e50914; 
+        box-shadow: 0 0 0.3rem rgba(229, 9, 20, 0.5);
+      }
+    }
+
+    
+    textarea.addMenu__btn {
+      height: auto;
+      min-height: 5rem;
+      font-family: inherit;
+      resize: vertical; 
+    }
+
+    
+    .addMenu__add {
+      background-color: #696969; 
+      color: #ffffff;
       border: none;
       cursor: pointer;
       height: 3rem;
       margin-top: 1.5rem;
       font-weight: bold;
-      transition: background-color 0.3s;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
 
       &:hover {
-        background-color: #e50914; // Un rouge au hover pour le style
+        background-color: #000000;
+        transform: translateY(-0.1rem);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
   }
 
-  @media (min-width: 48rem) { /
-    
-    .Profil__form {
+  @media (min-width: 48rem) { 
+
+    .addMenu__title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .addMenu__form {
       padding: 3rem;
 
-      .Profil__input, 
-      .Profil__select {
-        margin-top: 1.5rem;
-        font-size: 1.5rem;
-        padding: 1rem;
+      .addMenu__btn {
+        margin-top: 1.2rem;
+        font-size: 1.2rem;
+        padding: 0.8rem;
       }
 
-      .Profil__btn {
+      .addMenu__add {
         height: 4.5rem;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         margin-top: 2rem;
       }
     }

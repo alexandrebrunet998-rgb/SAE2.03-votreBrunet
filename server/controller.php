@@ -62,3 +62,13 @@ function readMovieDetailController(){
 function readCategoryController(){
     return getCategory();
 }
+
+
+function readPROFILEController(){
+    $profiles = getProfil();
+    if($profiles !== false){
+        return $profiles;
+    }else{
+        return false;
+    }
+}

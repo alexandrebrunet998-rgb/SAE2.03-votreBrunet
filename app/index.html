@@ -10,7 +10,6 @@
 
 <body>
   <header id="header"></header>
-
   <section id="content"></section>
 
   <script type="module">
@@ -19,39 +18,46 @@
     import { DataMovie } from "./data/dataMovie.js";
     import { movieDetail } from "./component/movieDetail/script.js"; 
     import { MovieCategory } from "./component/MovieCategory/script.js"; 
+    import { DataProfile } from "./data/dataProfile.js";
 
-    let film = await DataMovie.requestMovies();
-    // Controleur
-    // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
-    // Une fois l'application terminée, on pourrait remettre let C.
     window.C = {};
 
-    C.handlerAbout = function () {
+    C.handlerHome = async function () {
+      let film = await DataMovie.requestMovies();
       V.renderMovie(film);
     };
 
-    C.start = function () {
-      V.renderNavBar("C.handlerAbout()");
-      V.renderMovie(film);
+    C.hSelectProfil = function() {
+      let id = document.querySelector('#navbar__select').value;
+      if (id) {
+        console.log("Profil sélectionné : ID " + id);
+            } else {
+        alert("Veuillez choisir un profil");
+      }
     };
 
     C.handlerDetail = async function (id) {
       let detail = await DataMovie.requestMovieDetails(id);
       V.rendermovieDetail(detail);
-    }
-    // Vue (contient tout ce qui est relatif à l'affichage)
+    };
+
+    C.handlerLogout = async function () {
+      let detail = await DataMovie.requestMovieDetails(id);
+      V.rendermovieDetail(detail);
+    };
+
+    C.start = async function () { 
+      await V.renderNavBar(); 
+      let film = await DataMovie.requestMovies();
+      V.renderMovie(film);
+    };
+
     window.V = {};
 
-    /**
-     * V.renderNavBar
-     *
-     * Cette fonction est responsable de l'affichage de la barre de navigation (NavBar).
-     * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
-     * formaté par le composant NavBar.
-     */
-    V.renderNavBar = function (hAbout) {
-      let header = document.querySelector("#header");
-      header.innerHTML = NavBar.format(hAbout);
+    V.renderNavBar = async function() {
+      let profils = await DataProfile.readAll(); 
+      let html = NavBar.format(profils, "C.handlerHome()", "C.handlerHome()", "C.hSelectProfil()");
+      document.querySelector("#header").innerHTML = html;
     };
 
     V.renderMovie = function (data) {
@@ -60,8 +66,8 @@
       for (let CateName in data) {
         let categoryMovie = data[CateName];
         finalHtml += MovieCategory.format(CateName, categoryMovie);
-        content.innerHTML = finalHtml;
-      };
+      }
+      content.innerHTML = finalHtml;
     };
 
     V.rendermovieDetail = function (Data) {
@@ -69,9 +75,8 @@
       content.innerHTML = movieDetail.format(Data);
     };
 
-    C.start(); // Démarre l'application
+    // Démarrage
+    C.start(); 
   </script>
 </body>
-
 </html>
-<script type="module"></script>

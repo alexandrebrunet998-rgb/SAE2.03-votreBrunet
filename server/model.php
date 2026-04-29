@@ -95,3 +95,10 @@ function getCate(){
     return $stmt->fetchAll(PDO::FETCH_OBJ); 
 }
 
+function getProfil() {
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
+    $sql = "SELECT * FROM PROFILE"; 
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_OBJ); 
+}
