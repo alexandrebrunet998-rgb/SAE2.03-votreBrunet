@@ -2,19 +2,12 @@
 require("model.php");
 
 function readMoviesController(){
-    $movies = getAllMovies();
-    $category = [];
-
-    foreach($movies as $mvs){
-        $allmovie = $mvs->category_name;
-        if(!isset($category[$allmovie])){
-            $category[$allmovie] = [];
-        }
-        $category[$allmovie][] = $mvs; 
-    }
-    return $category;
+    $age = isset($_REQUEST['min_age']) ? $_REQUEST['min_age'] : 0;
+    
+    $movies = getAllMovies($age); 
+    
+    return $movies;
 }
-
 function updateController(){
     $name = $_REQUEST['name'];
     $year = $_REQUEST['year'];

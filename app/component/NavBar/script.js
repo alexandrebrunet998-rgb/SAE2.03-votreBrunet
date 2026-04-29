@@ -6,7 +6,7 @@ let templateLi = await templateLiFile.text();
 
 let NavBar = {};
 
-NavBar.format = function (data, hAbout, hHome, hProfil) {
+NavBar.format = function (data, hProfil) {
 
   let html = template;
 
@@ -18,8 +18,6 @@ NavBar.format = function (data, hAbout, hHome, hProfil) {
         listmovie += li;
     }
 
-  html = html.replace("{{hAbout}}", hAbout);
-  html = html.replace("{{hProfil}}", hProfil);
   html = html.replaceAll('{{navbar__profils}}', listmovie);
 
   return html;

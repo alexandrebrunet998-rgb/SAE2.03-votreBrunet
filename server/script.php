@@ -80,9 +80,6 @@ if ( isset($_REQUEST['todo']) ){
       $data = readCategoryController();
       break;
 
-      case 'readCategory':
-      $data = readCategoryController();
-      break;
 
       case 'readProfils':
       $data = readPROFILEController();

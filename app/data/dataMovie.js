@@ -3,14 +3,6 @@ let HOST_URL = "https://mmi.unilim.fr/~brunet92/SAE2.03-votreBrunet"; // CHANGE 
 
 let DataMovie = {};
 
-DataMovie.requestMovies = async function(){
-  
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=readmovies");
-  
-    let data = await answer.json();
-    return data;
-}
-
 
 DataMovie.requestMovieDetails = async function (id) {
     
@@ -20,6 +12,15 @@ DataMovie.requestMovieDetails = async function (id) {
     let movieData = await answer.json();
 
     return movieData;
+
+}
+DataMovie.requestMovies = async function( min_age ) {
+    
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=readmovies&min_age=" + min_age );
+    let data = await answer.json();
+    return data;
 }
 
 export {DataMovie};
+
+

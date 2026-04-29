@@ -16,23 +16,37 @@
     import { NavBar } from "./component/NavBar/script.js";
     import { Movie } from "./component/Movie/script.js";
     import { DataMovie } from "./data/dataMovie.js";
-    import { movieDetail } from "./component/movieDetail/script.js"; 
-    import { MovieCategory } from "./component/MovieCategory/script.js"; 
+    import { movieDetail } from "./component/movieDetail/script.js";
+    import { MovieCategory } from "./component/MovieCategory/script.js";
     import { DataProfile } from "./data/dataProfile.js";
+
+    let allProfiles = [];
 
     window.C = {};
 
-    C.handlerHome = async function () {
-      let film = await DataMovie.requestMovies();
-      V.renderMovie(film);
-    };
 
-    C.hSelectProfil = function() {
+
+    C.hSelectProfil = async function () {
       let id = document.querySelector('#navbar__select').value;
       if (id) {
-        console.log("Profil sélectionné : ID " + id);
-            } else {
-        alert("Veuillez choisir un profil");
+        let profil = null;
+
+
+        for (let i = 0; i < allProfiles.length; i++) {
+
+          if (allProfiles[i].id == id) {
+            profil = allProfiles[i];
+          }
+        }
+        let age = profil.age_restriction;
+        
+        
+        console.log("Valeur envoyée :", age);
+
+        let films = await DataMovie.requestMovies(age);
+        V.renderMovie(films);
+      } else {
+        C.handlerLogout();
       }
     };
 
@@ -41,21 +55,36 @@
       V.rendermovieDetail(detail);
     };
 
-    C.handlerLogout = async function () {
-      let detail = await DataMovie.requestMovieDetails(id);
-      V.rendermovieDetail(detail);
+    C.handlerLogout = function () {
+      document.querySelector("#content").innerHTML = `
+        <div class="logout-message">
+            <h2 clas="Logout__titre">Déconnexion réussie</h2>
+            <pclas="Logout__txt">Veuillez choisir un profil pour voir les films.</p>
+        </div>`;
+
+      let select = document.querySelector('#navbar__select');
+      if (select) select.value = "";
+
     };
 
-    C.start = async function () { 
-      await V.renderNavBar(); 
-      let film = await DataMovie.requestMovies();
-      V.renderMovie(film);
+    C.start = async function () {
+
+      allProfiles = await DataProfile.readAll();
+
+      await V.renderNavBar();
+
+      let content = document.querySelector("#content");
+      content.innerHTML = `
+        <div class="star">
+            <h2 class="star__titre">Bienvenue</h2>
+            <p class="star__titre">Veuillez sélectionner un profil en haut à droite pour voir les films.</p>
+        </div>`;
     };
 
     window.V = {};
 
-    V.renderNavBar = async function() {
-      let profils = await DataProfile.readAll(); 
+    V.renderNavBar = async function () {
+      let profils = await DataProfile.readAll();
       let html = NavBar.format(profils, "C.handlerHome()", "C.handlerHome()", "C.hSelectProfil()");
       document.querySelector("#header").innerHTML = html;
     };
@@ -79,4 +108,5 @@
     C.start(); 
   </script>
 </body>
+
 </html>

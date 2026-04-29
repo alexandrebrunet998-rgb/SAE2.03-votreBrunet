@@ -20,18 +20,32 @@ define("DBPWD", "brunet92");
 
 
 
-function getAllMovies(){
-    // Connexion à la base de données
+function getAllMovies($min_age){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "SELECT Movie.id, Movie.name,Movie.image,Category.name AS category_name FROM Movie, Category WHERE Movie.id_category = Category.id";
-    // Prépare la requête SQL
+    
+    $sql = "SELECT Movie.*, Category.name AS category_name 
+            FROM Movie 
+            INNER JOIN Category ON Movie.id_category = Category.id
+            WHERE Movie.min_age <= :min_age
+            ORDER BY Category.name, Movie.name";
+            
     $stmt = $cnx->prepare($sql);
-    // Exécute la requête SQL
+    $stmt->bindParam(':min_age', $min_age, PDO::PARAM_INT); 
     $stmt->execute();
-    // Récupère les résultats de la requête sous forme d'objets
-    return $stmt->fetchAll(PDO::FETCH_OBJ);
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    
+    $groupedData = [];
+    foreach ($res as $m) {
+        $cat = $m->category_name;
+        if (!isset($groupedData[$cat])) {
+            $groupedData[$cat] = [];
+        }
+        $groupedData[$cat][] = $m;
+    }
+    
+    return $groupedData; 
 }
+
 function updateMovies($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
     
