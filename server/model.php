@@ -14,7 +14,7 @@
  */
 define("HOST", "localhost");
 define("DBNAME", "SAE203");
-define("DBLOGIN", "usersae203");
+define("DBLOGIN", "userSAE203");
 define("DBPWD", "lamereagabriel24.");
 
 
