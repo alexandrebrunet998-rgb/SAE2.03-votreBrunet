@@ -13,9 +13,13 @@
  * DBPWD : Mot de passe pour se connecter à la base de données.
  */
 define("HOST", "localhost");
-define("DBNAME", "SAE203");
-define("DBLOGIN", "userSAE203");
-define("DBPWD", "lamereagabriel24.");
+// define("DBNAME", "SAE203");
+// define("DBLOGIN", "userSAE203");
+// define("DBPWD", "lamereagabriel24.");
+
+define("DBNAME", "brunet92");
+define("DBLOGIN", "brunet92");
+define("DBPWD", "brunet92");
 
 
 
@@ -78,6 +82,24 @@ function updateprofil($nom, $avatar, $age_restriction){
     
     $stmt = $cnx->prepare($sql);
     
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':avatar', $avatar);
+    $stmt->bindParam(':age_restriction', $age_restriction);
+    
+    $stmt->execute();
+    return $stmt->rowCount(); 
+}
+
+function updateExistingProfil($id, $nom, $avatar, $age_restriction) {
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
+    
+    $sql = "UPDATE PROFILE 
+            SET nom = :nom, avatar = :avatar, age_restriction = :age_restriction 
+            WHERE id = :id";
+    
+    $stmt = $cnx->prepare($sql);
+    
+    $stmt->bindParam(':id', $id);
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':avatar', $avatar);
     $stmt->bindParam(':age_restriction', $age_restriction);

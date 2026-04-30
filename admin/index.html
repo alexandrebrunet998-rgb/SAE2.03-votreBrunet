@@ -1,68 +1,97 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>SAE2.03 ADMIN</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/base.css" />
-  </head>
-  <body>
-    <section id="log"></section>
-    <section id="content"></section>
-    <section id="profil"></section>
 
-    <script type="module">
-      import { Log } from "./component/Log/script.js";
-      import {NewMenuForm} from './component/NewMenuForm/script.js';
-      import {DataMenu} from './data/dataMenu.js';
-      import { DataProfil } from './data/dataProfil.js';
-      import {Profil} from './component/Profil/script.js';
+<head>
+  <title>SAE2.03 ADMIN</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/base.css" />
+</head>
+
+<body>
+  <section id="log"></section>
+  <section id="content"></section>
+  <section id="form-add-profil"></section> 
+  <section id="form-update-profil"></section>
+
+  <script type="module">
+    import { Log } from "./component/Log/script.js";
+    import { NewMenuForm } from './component/NewMenuForm/script.js';
+    import { DataMenu } from './data/dataMenu.js';
+    import { DataProfile } from './data/dataProfile.js';
+    import { Profil } from './component/Profil/script.js';
+    import { Form } from './component/Form/script.js';
+
+    window.C = {};
+    window.V = {};
+
+    C.handlerFinalUpdate = async function () {
+    let form = document.querySelector('.UpdateProfil__form');
+    if (!form) return;
+    let fd = new FormData(form);
+    let res = await DataProfile.update(fd);
+    if (res == false) {
+        V.renderLog("Erreur : Le serveur ne répond pas");
+    } 
+    else if (res.status == "success") {
+        V.renderLog(res.message);
+        let newProfils = await DataProfile.requestProfiles();
+        V.renderUpdateSection(newProfils, "C.handlerFinalUpdate()");
+    } 
+    else {
+        V.renderLog("Erreur : " + res); 
+    }
+};
+
+    C.handlerProfil = async function () {
+      let form = document.querySelector('.Profil__form');
+      let fd = new FormData(form);
+      let res = await DataProfile.add(fd);
+      V.renderLog(res);
+    };
+
+    C.handlerUpdate = async function () {
+      let form = document.querySelector('.addMenu__form');
+      let fd = new FormData(form);
+      let res = await DataMenu.update(fd);
+      V.renderLog(res);
+    };
 
     
+    V.renderLog = function (txt) {
+      let content = document.querySelector("#log");
+      content.innerHTML = Log.format(txt);
+    };
 
+    V.renderMovies = function (Catagory, handler) {
+      let content = document.querySelector('#content');
+      content.innerHTML = NewMenuForm.format(Catagory, handler);
+    };
 
+    V.renderProfil = function (handler) {
+      let section = document.querySelector('#form-add-profil');
+      section.innerHTML = Profil.format(handler);
+    };
+
+    V.renderUpdateSection = function (data, handler) {
+      let target = document.querySelector('#form-update-profil');
+      target.innerHTML = Form.format(data, handler);
+    };
+
+    C.start = async function () {
+      V.renderLog("Chargement des données...");
       let Category = await DataMenu.requestCategory();
+      let profils = await DataProfile.requestProfiles();
 
-      window.C = {};
+      V.renderLog("Application prête");
+      V.renderProfil("C.handlerProfil()");
+      V.renderMovies(Category, "C.handlerUpdate()");
+      V.renderUpdateSection(profils, "C.handlerFinalUpdate()");
+    };
 
-       C.handlerProfil = async function(){
-            
-          let form = document.querySelector('.Profil__form');
-            let fd = new FormData(form);
-            let res = await DataProfil.update(fd);
-            V.renderLog(res);
-        }
-        C.handlerUpdate = async function(){
-  
-            let form = document.querySelector('.addMenu__form');
-              let fd = new FormData(form);
-              let res = await DataMenu.update(fd);
-              V.renderLog(res);
-          }
+    // 5. Lancement final
+    C.start();
+  </script>
+</body>
 
-      C.start = function () {
-        V.renderLog("Démarrage de l'application");
-        V.renderProfil("C.handlerProfil()");
-        V.renderMovies(Category, "C.handlerUpdate()");
-      };
-      
-
-      window.V = {};
-
-      V.renderLog = function (txt) {
-        let content = document.querySelector("#log");
-        content.innerHTML = Log.format(txt);
-      };
-       V.renderMovies = function(Catagory,handler){
-            let content = document.querySelector('#content');
-            content.innerHTML = NewMenuForm.format(Catagory,handler);
-        };
-        V.renderProfil = function(handler){
-            let profil = document.querySelector('#profil');
-            profil.innerHTML = Profil.format(handler);
-        };
-
-      C.start();
-    </script>
-  </body>
 </html>

@@ -27,6 +27,26 @@ function updateController(){
         return false;
     }
 }
+function updateProfileController() {
+    if(!isset($_REQUEST['id'])) return "ID manquant";
+    if(!isset($_REQUEST['nom'])) return "Nom manquant";
+
+    $id = $_REQUEST['id'];
+    $nom = $_REQUEST['nom'];
+    $avatar = $_REQUEST['avatar'] ?? ""; 
+    $age_restriction = $_REQUEST['age']; 
+    
+    $ok = updateExistingProfil($id, $nom, $avatar, $age_restriction);
+  
+    if ($ok !== false){
+        return ["status" => "success", "message" => "Le profil $nom a été mis à jour"]; 
+    } else {
+        return false;
+    }
+}
+
+
+
 function profilController(){
     if(!isset($_REQUEST['nom'])) return "Nom manquant";
 

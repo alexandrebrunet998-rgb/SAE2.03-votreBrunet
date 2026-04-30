@@ -1,0 +1,17 @@
+<div class="UpdateForm">
+    <p class="UpdateForm__title"># Modifier un profil</p>
+    <form class="UpdateProfil__form">
+        <select name="id">
+            {{ProfileList}}
+        </select>
+        <input class="UpdateForm__input" required type="text" name="nom" placeholder="Saisir un nom">
+        <input class="UpdateForm__input" type="text" name="avatar" placeholder="Saisir le nom du fichier de l'avatar">
+        <select class="UpdateForm__input" name="age">
+            <option class="UpdateForm__input" value="10">Tout public</option>
+            <option class="UpdateForm__input" value="12">Limite d'âge 12 ans</option>
+            <option class="UpdateForm__input" value="16">Limite d'âge 16 ans</option>
+            <option class="UpdateForm__input" value="18">Limite d'âge 18 ans</option>
+        </select>
+        <input class="UpdateForm__btn" onclick="{{handler}}" type="button" value="Update" name="todo">
+    </form>
+</div>

@@ -84,6 +84,11 @@ if ( isset($_REQUEST['todo']) ){
       case 'readProfils':
       $data = readPROFILEController();
       break;
+      
+      case 'updateprofile': // Correspond au todo dans ton DataProfile.js
+    $data = updateProfileController();
+    break;
+     
 
 
     default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée
