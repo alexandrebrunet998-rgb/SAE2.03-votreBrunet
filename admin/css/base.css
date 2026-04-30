@@ -7,4 +7,5 @@
 @import "../component/Log/style.css" layer(components);
 @import "../component/Profil/style.css" layer(components);
 @import "../component/NewMenuForm/style.css" layer(components);
+@import "../component/Form/style.css" layer(components);
 

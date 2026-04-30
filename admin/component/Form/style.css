@@ -1,0 +1,85 @@
+
+.UpdateForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #000000; 
+  min-height: auto;
+
+  .UpdateForm__title {
+    color: #FFFFFF; 
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .UpdateProfil__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 30rem;
+    gap: 1rem;
+    background-color: #1a1a1a; 
+    padding: 1.5rem;
+    border: 1px solid #333333;
+    border-radius: 0.25rem;
+
+    select, 
+    .UpdateForm__input {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #ffffff;
+      color: #000000; 
+      border: 1px solid #cccccc;
+      border-radius: 0.125rem;
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      outline: none;
+
+      &:focus {
+        border-color: #E50914;
+      }
+    }
+
+    .UpdateForm__btn {
+      width: 100%;
+      padding: 1rem;
+      background-color: #E50914; 
+      color: #FFFFFF; 
+      border: none;
+      border-radius: 0.125rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      margin-top: 0.5rem;
+
+      &:active {
+        background-color: #b20710;
+        transform: scale(0.98);
+      }
+    }
+  }
+}
+
+@media (min-width: 48rem) {
+  .UpdateForm {
+    padding: 3rem;
+
+    .UpdateForm__title {
+      font-size: 1.5rem;
+    }
+
+    .UpdateProfil__form {
+      padding: 2.5rem;
+
+      .UpdateForm__btn:hover {
+        background-color: #f40612; 
+      }
+    }
+  }
+}

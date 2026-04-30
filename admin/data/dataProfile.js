@@ -8,7 +8,7 @@ DataProfile.add = async function (pdata) {
         method: "POST", 
         body: pdata 
     };
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=addprofile", config);
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=profil", config);
     let data = await answer.json();
     return data;
 }
