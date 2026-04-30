@@ -20,12 +20,11 @@
     import { MovieCategory } from "./component/MovieCategory/script.js";
     import { DataProfile } from "./data/dataProfile.js";
 
+    
     let allProfiles = [];
-
     window.C = {};
 
-
-
+    
     C.hSelectProfil = async function () {
       let id = document.querySelector('#navbar__select').value;
       if (id) {
@@ -57,7 +56,7 @@
 
     C.handlerLogout = function () {
       document.querySelector("#content").innerHTML = `
-        <div class="logout-message">
+        <div class="star">
             <h2 clas="Logout__titre">Déconnexion réussie</h2>
             <pclas="Logout__txt">Veuillez choisir un profil pour voir les films.</p>
         </div>`;
@@ -76,8 +75,8 @@
       let content = document.querySelector("#content");
       content.innerHTML = `
         <div class="star">
-            <h2 class="star__titre">Bienvenue</h2>
-            <p class="star__titre">Veuillez sélectionner un profil en haut à droite pour voir les films.</p>
+            <h2 class="Logout__titre">Bienvenue</h2>
+            <p class="Logout__txt">Veuillez sélectionner un profil en haut à droite pour voir les films.</p>
         </div>`;
     };
 

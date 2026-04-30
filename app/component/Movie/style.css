@@ -12,7 +12,7 @@
     grid-template-columns: 1fr;
   }
 
-  
+
   .card__movie {
     background: #f4f4f4;
     border-radius: 0.5rem;
@@ -20,7 +20,7 @@
     box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
     text-align: center;
     padding-bottom: 1rem;
-    
+
 
     .card__movie-img {
       width: 100%;
@@ -37,7 +37,6 @@
     }
   }
 
-  /* MEDIA QUERY IMBRIQUÉE (Structure Desktop) */
   @media (min-width: 48rem) {
     max-width: 160rem;
     padding-top: 8rem;
@@ -48,7 +47,7 @@
     }
 
     .card__movie {
-      padding: 4rem 2rem; 
+      padding: 4rem 2rem;
       border-radius: 1rem;
 
       .card__movie-img {
@@ -58,7 +57,7 @@
       }
 
       .card__movie-title {
-        font-size: 2.5rem; 
+        font-size: 2.5rem;
         padding: 0.5rem 0;
         line-height: 1.2;
       }
