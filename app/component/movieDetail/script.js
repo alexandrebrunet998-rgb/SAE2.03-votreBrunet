@@ -3,7 +3,7 @@ let template = await templateFile.text();
 
 let movieDetail = {};
 
-movieDetail.format = function (data) {
+movieDetail.format = function (data, Favoris) {
   let html = template;
 
   html = html.replaceAll("{{title}}", data.name); 
@@ -15,8 +15,20 @@ movieDetail.format = function (data) {
   html = html.replaceAll("{{description}}", data.description);
   html = html.replaceAll("{{trailer}}", data.trailer);
 
+  let btn = "";
+  if (Favoris) {
+    btn = `<button class="movieDetail__btn-fav movieDetail__btn-fav--disabled" disabled>
+                 ✓ Déjà dans vos favoris
+               </button>`;
+  } else {
+    btn = `<button class="movieDetail__btn-fav" onclick="C.hAddFav(${data.id})">
+                 + Ajouter aux favoris
+               </button>`;
+  }
+
+  html = html.replaceAll("{{fav_btn}}", btnHtml);
+
   return html;
 };
 
 export { movieDetail };
-

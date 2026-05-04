@@ -41,6 +41,22 @@ function updateProfileController() {
         return ["status" => "error", "message" => "Erreur SQL lors de la modification"];
     }
 }
+function addFavController() {
+    if(!isset($_REQUEST['id_profil']) || !isset($_REQUEST['id_film'])) {
+        return ["status" => "error", "message" => "Données manquantes"];
+    }
+
+    $id_p = $_REQUEST['id_profil'];
+    $id_f = $_REQUEST['id_film'];
+    
+    $res = addFavoris($id_p, $id_f);
+  
+    return [
+        "status" => "success",
+        "message" => "Le film a été ajouté à vos favoris",
+        "resultat" => $res
+    ];
+}
 
 function profilController(){
     if(!isset($_REQUEST['nom'])) {

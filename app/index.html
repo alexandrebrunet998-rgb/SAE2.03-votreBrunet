@@ -65,6 +65,20 @@
       if (select) select.value = "";
 
     };
+C.hAddFav = async function (id_film) {
+    let id_profil = document.querySelector('#navbar__select').value;
+    if (id_profil) {
+        let response = await fetch(`server/script.php?action=addFav&id_profil=${id_profil}&id_film=${id_film}`);
+        let result = await response.json();
+        if (result.status === "success") {
+            alert("Le film a été ajouté à vos favoris.");
+            C.handlerDetail(id_film); 
+        }
+    } else {
+        alert("Veuillez d'abord sélectionner un profil !");
+    }
+};
+
 
     C.start = async function () {
 
@@ -102,6 +116,17 @@
       let content = document.querySelector("#content");
       content.innerHTML = movieDetail.format(Data);
     };
+    V.rendermovieDetail = async function (Data) {
+    let content = document.querySelector("#content");
+    let id_profil = document.querySelector('#navbar__select').value;
+    let isFav = false;
+    if (id_profil) {
+        let check = await fetch(`server/script.php?action=getFavs&id_profil=${id_profil}`);
+        let mesFavoris = await check.json();
+        isFav = mesFavoris.some(f => f.id == Data.id);
+    }
+    content.innerHTML = movieDetail.format(Data, isFav);
+};
 
     // Démarrage
     C.start(); 

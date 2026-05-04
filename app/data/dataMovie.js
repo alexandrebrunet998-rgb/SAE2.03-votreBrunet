@@ -20,6 +20,11 @@ DataMovie.requestMovies = async function( min_age ) {
     let data = await answer.json();
     return data;
 }
+DataMovie.addFavoris = async function (id_profil, id_film) {
+    const url = `server/script.php?action=addFav&id_profil=${id_profil}&id_film=${id_film}`;
+    const response = await fetch(url);
+    return await response.json();
+};
 
 export {DataMovie};
 

@@ -85,8 +85,12 @@ if ( isset($_REQUEST['todo']) ){
       $data = readPROFILEController();
       break;
       
-      case 'updateProfile': // Correspond au todo dans ton DataProfile.js
+      case 'updateProfile': 
     $data = updateProfileController();
+    break;
+
+    case 'addFav':
+    $data = addFavController();
     break;
      
 

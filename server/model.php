@@ -52,6 +52,19 @@ function getAllMovies($min_age){
     return $groupedData; 
 }
 
+function addFavoris($id_profil, $id_film) {
+    try {
+        $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+        // INSERT IGNORE évite de planter si l'utilisateur clique deux fois sur le même film
+        $sql = "INSERT IGNORE INTO FAVORIS (id_profil, id_film) VALUES (:p, :f)";
+        $stmt = $cnx->prepare($sql);
+        $stmt->execute([':p' => $id_profil, ':f' => $id_film]);
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 function updateMovies($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
     
