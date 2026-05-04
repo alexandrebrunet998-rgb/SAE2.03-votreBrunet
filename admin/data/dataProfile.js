@@ -1,4 +1,4 @@
-let HOST_URL = "https://brunet-sae203.mmi-limoges.fr/";
+let HOST_URL = "https://mmi.unilim.fr/~brunet92/SAE2.03-votreBrunet";
 
 let DataProfile = {};
 
@@ -19,7 +19,7 @@ DataProfile.update = async function (pdata) {
         method: "POST", 
         body: pdata 
     };
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=updateprofile", config);
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=updateProfile", config);
     let data = await answer.json();
     return data;
 }

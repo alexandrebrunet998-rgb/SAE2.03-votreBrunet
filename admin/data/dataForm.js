@@ -1,4 +1,4 @@
-let HOST_URL = "https://brunet-sae203.mmi-limoges.fr/";
+let HOST_URL = "https://mmi.unilim.fr/~brunet92/SAE2.03-votreBrunet";
 
 let dataForm = {};
 
@@ -8,7 +8,7 @@ dataForm.readAll = async function() {
 };
 
 dataForm.update = async function(fd) {
-    let response = await fetch(HOST_URL + '/server/script.php?todo=updateProfil', {
+    let response = await fetch(HOST_URL + '/server/script.php?todo=updateProfile', {
         method: 'POST',
         body: fd
     });
