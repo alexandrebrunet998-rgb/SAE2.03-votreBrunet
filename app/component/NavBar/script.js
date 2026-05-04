@@ -6,9 +6,11 @@ let templateLi = await templateLiFile.text();
 
 let NavBar = {};
 
-NavBar.format = function (data, hProfil) {
+NavBar.format = function (data) {
 
   let html = template;
+
+
 
   let listmovie = "";
     for(let category of data){
@@ -22,5 +24,6 @@ NavBar.format = function (data, hProfil) {
 
   return html;
 };
+
 
 export { NavBar };

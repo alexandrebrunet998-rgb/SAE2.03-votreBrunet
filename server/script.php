@@ -92,6 +92,10 @@ if ( isset($_REQUEST['todo']) ){
     case 'addFav':
     $data = addFavController();
     break;
+    
+    case 'getFavs':
+    $data = getFavsController(); // On appelle le contrôleur
+    break;
      
 
 

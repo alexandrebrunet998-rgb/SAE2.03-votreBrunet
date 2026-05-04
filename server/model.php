@@ -48,21 +48,32 @@ function getAllMovies($min_age){
         }
         $groupedData[$cat][] = $m;
     }
-    
+
     return $groupedData; 
 }
 
+function getFavorisByProfil($id_p) {
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "SELECT Movie.* FROM Movie 
+            INNER JOIN FAVORIS ON Movie.id = FAVORIS.id_film 
+            WHERE FAVORIS.id_profil = :p";
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute([':p' => $id_p]);
+    return $stmt->fetchAll(PDO::FETCH_OBJ); 
+}
+
 function addFavoris($id_profil, $id_film) {
-    try {
-        $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-        // INSERT IGNORE évite de planter si l'utilisateur clique deux fois sur le même film
+   function addFavoris($id_profil, $id_film) {
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    if ($cnx) {
         $sql = "INSERT IGNORE INTO FAVORIS (id_profil, id_film) VALUES (:p, :f)";
         $stmt = $cnx->prepare($sql);
-        $stmt->execute([':p' => $id_profil, ':f' => $id_film]);
-        return true;
-    } catch (Exception $e) {
-        return false;
+        if ($stmt->execute([':p' => $id_profil, ':f' => $id_film])) {
+            return true;
+        }
     }
+    return false;
+}
 }
 
 function updateMovies($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age){
@@ -89,12 +100,8 @@ function updateMovies($name, $year, $length, $description, $director, $id_catego
 
 function updateprofil($nom, $avatar, $age_restriction){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
-    
-    // Correction : On retire les virgules devant les noms de colonnes et le champ ID 
-    // (si l'ID est en auto-increment dans ta base, ne l'insère pas manuellement)
     $sql = "INSERT INTO PROFILE (nom, avatar, age_restriction)
             VALUES (:nom, :avatar, :age_restriction)";
-    
     $stmt = $cnx->prepare($sql);
     
     $stmt->bindParam(':nom', $nom);

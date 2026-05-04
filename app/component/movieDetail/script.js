@@ -26,7 +26,7 @@ movieDetail.format = function (data, Favoris) {
                </button>`;
   }
 
-  html = html.replaceAll("{{fav_btn}}", btnHtml);
+  html = html.replaceAll("{{fav_btn}}", btn);
 
   return html;
 };

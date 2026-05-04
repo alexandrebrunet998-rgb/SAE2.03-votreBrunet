@@ -58,6 +58,11 @@ function addFavController() {
     ];
 }
 
+function getFavsController() {
+    $id_p = $_REQUEST['id_profil'];
+    return getFavorisByProfil($id_p); 
+}
+
 function profilController(){
     if(!isset($_REQUEST['nom'])) {
         return ["status" => "error", "message" => "Nom manquant"];
