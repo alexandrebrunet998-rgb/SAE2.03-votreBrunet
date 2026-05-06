@@ -5,7 +5,7 @@
   justify-content: center;
   width: 100%;
   padding: 4rem;
-  background: radial-gradient(circle at center, #1a1a1a 0%, var(--nav-bg) 100%);
+  background: radial-gradient(circle at center, #222222 0%, var(--nav-bg) 100%);
   font-family: var(--nav-font);
   overflow: hidden;
 
@@ -56,9 +56,8 @@
     width: 3.5rem;
     height: 3.5rem;
     top: 50%;
-    transform: translateY(-50%);
     z-index: 10;
-    color: #ffffff;
+    color: var(--nav-text);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;

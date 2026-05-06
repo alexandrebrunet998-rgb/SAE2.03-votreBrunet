@@ -114,7 +114,6 @@ function readPROFILEController() {
 // ----------------------------------------------------
 
 function addFavController() {
-    // On s'assure qu'on a bien le profil et le film
     if (!isset($_REQUEST['id_profil']) || !isset($_REQUEST['id_film'])) {
         return ["status" => "error", "message" => "Données manquantes"];
     }

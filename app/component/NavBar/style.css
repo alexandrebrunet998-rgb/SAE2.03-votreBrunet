@@ -31,6 +31,7 @@
       filter: brightness(0) invert(1);
     }
   }
+  
 
   .navbar__item-home,
   .navbar__item-deconnexion {
@@ -62,9 +63,9 @@
     #navbar__select {
       padding: 0.5rem 1.2rem;
       background-color: transparent;
-      color: white;
+      color: var(--nav-text);
       font-size: 1rem;
-      border: 1.5px solid white;
+      border: 1.5px solid var(--nav-text);
       border-radius: 20px;
       font-weight: 600;
       cursor: pointer;
@@ -77,9 +78,9 @@
     .navbar__btn {
       padding: 0.5rem 1.2rem;
       background-color: transparent;
-      color: white;
+      color: var(--nav-text);
       font-size: 1rem;
-      border: 1.5px solid white;
+      border: 1.5px solid var(--nav-text);
       border-radius: 20px;
       font-weight: 600;
       cursor: pointer;
@@ -97,14 +98,14 @@
   align-items: center;
   justify-content: center;
   min-height: 75vh;
-  background: radial-gradient(circle at center, #1a1a1a 0%, var(--nav-bg) 100%);
+  background: radial-gradient(circle at center, #222222 0%, var(--nav-bg) 100%);
   font-family: var(--nav-font);
   color: var(--nav-text);
 
   .star__titre {
     font-size: 4rem;
     margin-bottom: 1.25rem;
-    letter-spacing: -0.063rem;
+    letter-spacing: -0.06rem;
   }
 
   .star__txt {

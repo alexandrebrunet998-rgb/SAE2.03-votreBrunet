@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
-  --nav-bg: #0e0e0e;           
+  --nav-bg: #0e0e0e;    
+         
   --nav-text: #ffffff;         
   --nav-hover: rgba(126, 122, 122, 0.993); 
   --nav-font: 'roboto', sans-serif;
