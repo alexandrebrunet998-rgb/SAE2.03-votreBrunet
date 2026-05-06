@@ -1,0 +1,89 @@
+.addMenu {
+  width: 30rem; 
+  margin: 0 auto;
+
+  .addMenu__title {
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.4rem;
+  }
+
+  .addMenu__form {
+    display: flex;
+    flex-direction: column;
+    border: 0.0625rem solid #ffffff;
+    padding: 1.5rem;
+    background-color: #1f1f1f; 
+    .addMenu__btn {
+      margin-top: 0.8rem;
+      font-size: 1rem;
+      background-color: #ffffff;
+      color: #000000;
+      border: 0.0625rem solid #000000;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      width: 100%;
+      outline: none;
+
+      &:focus {
+        border-color: #e50914; 
+        box-shadow: 0 0 0.3rem rgba(229, 9, 20, 0.5);
+      }
+    }
+
+    
+    textarea.addMenu__btn {
+      height: auto;
+      min-height: 5rem;
+      font-family: inherit;
+      resize: vertical; 
+    }
+
+    
+    .addMenu__add {
+      background-color: #696969; 
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      height: 3rem;
+      margin-top: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #000000;
+        transform: translateY(-0.1rem);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  @media (min-width: 48rem) { 
+
+    .addMenu__title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .addMenu__form {
+      padding: 3rem;
+
+      .addMenu__btn {
+        margin-top: 1.2rem;
+        font-size: 1.2rem;
+        padding: 0.8rem;
+      }
+
+      .addMenu__add {
+        height: 4.5rem;
+        font-size: 1.5rem;
+        margin-top: 2rem;
+      }
+    }
+  }
+}

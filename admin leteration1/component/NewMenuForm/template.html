@@ -1,0 +1,32 @@
+<div class="addMenu">
+    <h1 class="addMenu__title"># Ajouter ou modifier un film</h1>
+    
+    <form class="addMenu__form">
+        
+        <select class="addMenu__btn" required name="id_category">
+        {{List}}
+        </select>
+
+        <input class="addMenu__btn" required type="text" name="name" placeholder="Titre du film">
+        <input class="addMenu__btn" required type="text" name="director" placeholder="Réalisateur" pattern="[^0-9]*" title="Les chiffres ne sont pas autorisés pour le nom du réalisateur">
+
+        <input class="addMenu__btn" required type="number" name="year" placeholder="Année de sortie (ex: 2024)" min="1895" max="2026">
+        <input class="addMenu__btn" required type="number" name="length" placeholder="Durée en minutes" min="1">
+
+        <textarea class="addMenu__btn" required name="description" placeholder="Synopsis ou description du film"></textarea>
+
+        <input class="addMenu__btn" required type="text" name="image" placeholder="Nom du fichier de l'affiche (ex: movie.jpg)">
+        <input class="addMenu__btn" required type="url" name="trailer" placeholder="URL du trailer (https://...)">
+
+        <select class="addMenu__btn" required name="min_age">
+            <option value="10">Interdit aux -10 ans</option>
+            <option value="12">Interdit aux moins de 12 ans</option>
+            <option value="16">Interdit aux moins de 16 ans</option>
+            <option value="18">Interdit aux moins de 18 ans</option>
+        </select>
+
+        <input class="addMenu__add" onclick="{{handler}}" type="button" value="Ajouter au catalogue" name="todo">
+
+    </form>
+</div>
+
