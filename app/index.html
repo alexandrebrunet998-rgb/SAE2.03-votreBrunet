@@ -19,6 +19,7 @@
     import { movieDetail } from "./component/movieDetail/script.js";
     import { MovieCategory } from "./component/MovieCategory/script.js";
     import { DataProfile } from "./data/dataProfile.js";
+    import { Feature } from "./component/Feature/script.js";
 
 
     let allProfiles = [];
@@ -44,12 +45,22 @@
         C.handlerLogout();
       }
     };
-    
+
 
     C.handlerDetail = async function (id) {
-      let detail = await DataMovie.requestMovieDetails(id);
-      V.rendermovieDetail(detail);
-    };
+    let id_profil = document.querySelector('#navbar__select').value;
+    let detail = await DataMovie.requestMovieDetails(id);
+    let isFav = false; 
+    if (id_profil) {
+        let mesFavoris = await DataMovie.getFavorites(id_profil);
+        for (let i = 0; i < mesFavoris.length; i++) {
+            if (mesFavoris[i].id == detail.id) {
+                isFav = true; 
+            }
+        }
+    }
+    V.rendermovieDetail(detail, isFav);
+};
 
     C.handlerLogout = function () {
       document.querySelector("#content").innerHTML = `
@@ -63,12 +74,24 @@
 
     };
     C.hAddFav = async function (id_film) {
-  let id_profil = document.querySelector('#navbar__select').value;
+      let id_profil = document.querySelector('#navbar__select').value;
+      if (id_profil) {
+        let result = await DataMovie.addFavorite(id_profil, id_film);
+        if (result.status == "success") {
+          alert("Le film a été ajouté à vos favoris.");
+          C.handlerDetail(id_film);
+        }
+      } else {
+        alert("Veuillez d'abord sélectionner un profil !");
+      }
+    };
 
+   C.hdeleteFav = async function (id_film) {
+  let id_profil = document.querySelector('#navbar__select').value;
   if (id_profil) {
-    let result = await DataMovie.addFavorite(id_profil, id_film);
+    let result = await DataMovie.deleteFavorite(id_profil, id_film);
     if (result.status == "success") {
-      alert("Le film a été ajouté à vos favoris.");
+      alert("Le film a été retiré de vos favoris.");
       C.handlerDetail(id_film);
     }
   } else {
@@ -76,7 +99,7 @@
   }
 };
 
-    C.handlerHome = async function (){
+    C.handlerHome = async function () {
       C.hSelectProfil()
     }
 
@@ -103,15 +126,17 @@
       document.querySelector("#header").innerHTML = html;
     };
 
-      
 
- V.renderMovie = async function (data) {
+
+   V.renderMovie = async function (data) {
   let content = document.querySelector("#content");
   let id_profil = document.querySelector('#navbar__select').value;
+  
   let finalHtml = "";
   if (id_profil) {
+    let featuredData = await DataMovie.requestFeatured();
+    finalHtml += Feature.format(featuredData);
     let favoris = await DataMovie.getFavorites(id_profil);
-
     if (favoris.length > 0) {
       finalHtml += MovieCategory.format("Ma Liste", favoris);
     }
@@ -120,29 +145,28 @@
     let categoryMovie = data[CateName];
     finalHtml += MovieCategory.format(CateName, categoryMovie);
   }
-  
   content.innerHTML = finalHtml;
 };
 
-    V.rendermovieDetail = function (Data) {
+    V.rendermovieDetail = function (Data, isFav) {
       let content = document.querySelector("#content");
-      content.innerHTML = movieDetail.format(Data);
+      content.innerHTML = movieDetail.format(Data, isFav);
     };
     V.renderFavoris = async function (Data) {
-  let content = document.querySelector("#content");
-  let id_profil = document.querySelector('#navbar__select').value;
-  let isFav = false; 
-  if (id_profil) {
-    let mesFavoris = await DataMovie.getFavorites(id_profil);
-    for (let i = 0; i < mesFavoris.length; i++) {
-      if (mesFavoris[i].id == Data.id) {
-        isFav = true; 
+      let content = document.querySelector("#content");
+      let id_profil = document.querySelector('#navbar__select').value;
+      let isFav = false;
+      if (id_profil) {
+        let mesFavoris = await DataMovie.getFavorites(id_profil);
+        for (let i = 0; i < mesFavoris.length; i++) {
+          if (mesFavoris[i].id == Data.id) {
+            isFav = true;
+          }
+        }
       }
-    }
-  }
 
-  content.innerHTML = movieDetail.format(Data, isFav);
-};
+      content.innerHTML = movieDetail.format(Data, isFav);
+    };
 
     // Démarrage
     C.start(); 

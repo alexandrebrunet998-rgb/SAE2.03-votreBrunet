@@ -30,8 +30,8 @@ function updateProfileController() {
 
     $id = $_REQUEST['id'];
     $nom = $_REQUEST['nom'];
-    $avatar = $_REQUEST['avatar'] ?? ""; 
-    $age = $_REQUEST['age_restriction'] ?? 0; 
+    $avatar = $_REQUEST['avatar'] ; 
+    $age = $_REQUEST['age_restriction'] ; 
     
     $ok = updateExistingProfil($id, $nom, $avatar, $age);
     
@@ -57,6 +57,35 @@ function addFavController() {
         "resultat" => $res
     ];
 }
+function readFeaturedController(){
+    $movies = getFeaturedMovies(); 
+    if($movies !== false){
+        return $movies;
+    } else {
+        return [];
+    }
+}
+
+
+function deleteFavController() {
+    if(!isset($_REQUEST['id_profil']) || !isset($_REQUEST['id_film'])) {
+        return ["status" => "error", "message" => "Données manquantes pour la suppression"];
+    }
+    $id_p = $_REQUEST['id_profil'];
+    $id_f = $_REQUEST['id_film'];
+    $nb = deleteFavoris($id_p, $id_f);
+    if ($nb > 0) {
+        return [
+            "status" => "success",
+            "message" => "Le film a été retiré de vos favoris"
+        ];
+    } else {
+        return [
+            "status" => "error", 
+            "message" => "Le film n'était pas dans vos favoris"
+        ];
+    }
+}
 
 function getFavsController() {
     $id_p = $_REQUEST['id_profil'];
@@ -68,8 +97,8 @@ function profilController(){
         return ["status" => "error", "message" => "Nom manquant"];
     }
     $nom = $_REQUEST['nom'];
-    $avatar = $_REQUEST['avatar'] ?? ""; 
-    $age = $_REQUEST['age_restriction'] ?? 0; 
+    $avatar = $_REQUEST['avatar'] ; 
+    $age = $_REQUEST['age_restriction'] ; 
     $ok = updateprofil($nom, $avatar, $age);
     if ($ok != 0) {
         return ["status" => "success", "message" => "Profil créé !"]; 

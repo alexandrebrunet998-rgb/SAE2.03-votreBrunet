@@ -96,7 +96,16 @@ if ( isset($_REQUEST['todo']) ){
     case 'getFavs':
     $data = getFavsController(); // On appelle le contrôleur
     break;
-     
+
+    case 'readFeature':
+    $data = getFeaturedMovies(); // Appel direct au modèle ou via un controller
+    break;
+
+    case 'deleteFav':
+    $data = deleteFavController();
+    break;
+   
+
 
 
     default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée
@@ -125,9 +134,10 @@ if ( isset($_REQUEST['todo']) ){
    * par la fonction de contrôleur et encodées en JSON (json_encode).
    * On renvoie aussi un code de réponse HTTP 200 (OK) pour indiquer que la requête a été traitée avec succès.
    */
-  echo json_encode($data);
-  http_response_code(200); // 200 == "OK"
-  exit();
+header('Content-Type: application/json');
+http_response_code(200); 
+echo json_encode($data);
+exit();
 
    
 } // fin de if ( isset($_REQUEST['todo']) )

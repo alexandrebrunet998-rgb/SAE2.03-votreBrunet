@@ -51,6 +51,13 @@ function getAllMovies($min_age){
 
     return $groupedData; 
 }
+function deleteFavoris($id_profil, $id_film) {
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "DELETE FROM FAVORIS WHERE id_profil = :p AND id_film = :f";
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute([':p' => $id_profil, ':f' => $id_film]);
+    return $stmt->rowCount(); 
+}
 
 function getFavorisByProfil($id_p) {
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
@@ -62,7 +69,7 @@ function getFavorisByProfil($id_p) {
     return $stmt->fetchAll(PDO::FETCH_OBJ); 
 }
 
-function addFavoris($id_profil, $id_film) {
+
    function addFavoris($id_profil, $id_film) {
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     if ($cnx) {
@@ -73,7 +80,6 @@ function addFavoris($id_profil, $id_film) {
         }
     }
     return false;
-}
 }
 
 function updateMovies($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age){
@@ -98,6 +104,7 @@ function updateMovies($name, $year, $length, $description, $director, $id_catego
     return $res; 
 }
 
+
 function updateprofil($nom, $avatar, $age_restriction){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
     $sql = "INSERT INTO PROFILE (nom, avatar, age_restriction)
@@ -111,21 +118,24 @@ function updateprofil($nom, $avatar, $age_restriction){
     $stmt->execute();
     return $stmt->rowCount(); 
 }
+function getFeaturedMovies() {
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME.";charset=utf8", DBLOGIN, DBPWD);
+    $sql = "SELECT * FROM Movie WHERE is_featured = 1";
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+}
 
 function updateExistingProfil($id, $nom, $avatar, $age_restriction) {
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
-    
     $sql = "UPDATE PROFILE 
             SET nom = :nom, avatar = :avatar, age_restriction = :age_restriction 
             WHERE id = :id";
-    
     $stmt = $cnx->prepare($sql);
-    
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':avatar', $avatar);
     $stmt->bindParam(':age_restriction', $age_restriction);
-    
     $stmt->execute();
     return $stmt->rowCount(); 
 }

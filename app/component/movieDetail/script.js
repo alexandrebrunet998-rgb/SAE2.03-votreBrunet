@@ -16,14 +16,15 @@ movieDetail.format = function (data, Favoris) {
   html = html.replaceAll("{{trailer}}", data.trailer);
 
   let btn = "";
+  
   if (Favoris) {
-    btn = `<button class="movieDetail__btn-fav movieDetail__btn-fav--disabled" disabled>
-                 ✓ Déjà dans vos favoris
-               </button>`;
+    btn = '<button class="movieDetail__btn-delete" onclick="C.hdeleteFav(' + data.id + ')">' +
+             'x Retirer des favoris' +
+           '</button>';
   } else {
-    btn = `<button class="movieDetail__btn-fav" onclick="C.hAddFav(${data.id})">
-                 + Ajouter aux favoris
-               </button>`;
+    btn = '<button class="movieDetail__btn-fav" onclick="C.hAddFav(' + data.id + ')">' +
+             '+ Ajouter aux favoris' +
+           '</button>';
   }
 
   html = html.replaceAll("{{fav_btn}}", btn);

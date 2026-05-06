@@ -32,6 +32,18 @@ DataMovie.getFavorites = async function(id_profil) {
     let favoris = await response.json();
     return favoris;
 };
+DataMovie.deleteFavorite = async function(id_profil, id_film) {
+    let url = "../server/script.php?todo=deleteFav&id_profil=" + id_profil + "&id_film=" + id_film;
+    let response = await fetch(url);
+    let result = await response.json();
+    return result;
+};
+DataMovie.requestFeatured = async function () {
+    let url = "/server/script.php?todo=readFeature";
+    let answer = await fetch(HOST_URL + url);
+    let data = await answer.json();
+    return data;
+}
 
 export {DataMovie};
 
