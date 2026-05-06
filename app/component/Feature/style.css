@@ -1,0 +1,107 @@
+.Feature {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 4rem;
+  background: radial-gradient(circle at center, #1a1a1a 0%, var(--nav-bg) 100%);
+  font-family: var(--nav-font);
+  overflow: hidden;
+
+  .Feature__list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .Feature__item {
+    display: flex;
+    justify-content: center;
+    min-width: 80vw;
+    cursor: pointer;
+    scroll-snap-align: center;
+
+    .Feature__cover {
+      width: 100%;
+      height: 30rem;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-1rem) scale(1.01);
+        box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.8), 
+                    0 0.5rem 1.5rem rgba(255, 255, 255, 0.1);
+        filter: brightness(1.1);
+      }
+    }
+  }
+
+  .Feature__arrow {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    color: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.103);
+    }
+
+    &.Feature__arrow--left {
+      left: 2rem;
+    }
+
+    &.Feature__arrow--right {
+      right: 2rem;
+    }
+
+    .Feature__arrow-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  .Feature__pagination {
+    position: absolute;
+    display: flex;
+    bottom: 1.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 0.4rem;
+
+    .Feature__dot {
+      width: 0.4rem;
+      height: 0.4rem;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &.Feature__dot--active {
+        background-color: #ffffff;
+        width: 0.5rem;
+        height: 0.5rem;
+      }
+    }
+  }
+}

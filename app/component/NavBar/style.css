@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 5.5rem;          
-  padding: 3rem 5rem;       
-  background-color: var(--nav-bg);
+  min-height: 5.5rem;
+  padding: 3rem 5rem;
+  background: radial-gradient(circle at center, #1a1a1a 0%, var(--nav-bg) 100%);
   color: var(--nav-text);
   font-family: var(--nav-font);
 
@@ -15,35 +15,35 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 2.5rem;              
+    gap: 2.5rem;
+    font-family: var(--nav-font);
+
   }
 
   .navbar__logo-container {
     display: flex;
     align-items: center;
     margin-right: 1.5rem;
-
     .navbar__logo {
-      height: 2.5rem;         
+      height: 1.7rem;
       width: auto;
       cursor: pointer;
       filter: brightness(0) invert(1);
     }
   }
 
-  .navbar__item-home, 
+  .navbar__item-home,
   .navbar__item-deconnexion {
-    display: flex;
-    align-items: center;
     padding: 0.6rem 1.2rem;
-    font-size: 1.7rem;
+    font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
     border-radius: 50px;
-    transition: background-color 0.2s ease;
-
+    font-family: var(--nav-font);
     &:hover {
       background-color: var(--nav-hover);
+      padding-bottom: 0.2rem;
+      padding-top: 0.2rem;
     }
 
     a {
@@ -70,8 +70,8 @@
       cursor: pointer;
       font-family: var(--nav-font);
       &:hover {
-      background-color: var(--nav-hover);
-    }   
+        background-color: var(--nav-hover);
+      }
     }
 
     .navbar__btn {
@@ -85,8 +85,32 @@
       cursor: pointer;
       font-family: var(--nav-font);
       &:hover {
-      background-color: var(--nav-hover);
+        background-color: var(--nav-hover);
+      }
     }
-    }
+  }
+}
+
+.star {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 75vh;
+  background: radial-gradient(circle at center, #1a1a1a 0%, var(--nav-bg) 100%);
+  font-family: var(--nav-font);
+  color: var(--nav-text);
+
+  .star__titre {
+    font-size: 4rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.063rem;
+  }
+
+  .star__txt {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--nav-text);
+    font-family: var(--nav-font);
   }
 }

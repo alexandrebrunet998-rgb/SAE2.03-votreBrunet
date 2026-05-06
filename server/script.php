@@ -59,7 +59,7 @@ if ( isset($_REQUEST['todo']) ){
   // en fonction de la valeur de 'todo', on appelle la fonction de contrôle appropriée
   // peut s'écrire aussi avec des if/else
   switch($todo){
-
+   
     case 'readmovies':
       $data = readMoviesController();
       break;
