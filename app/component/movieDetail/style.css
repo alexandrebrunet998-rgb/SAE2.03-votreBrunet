@@ -35,7 +35,7 @@
     left: 1.875rem;
     font-size: 2.5rem;
     padding-top: 25rem;
-    
+
   }
 
   .movieDetail__close {
@@ -65,7 +65,7 @@
   }
 
   .movieDetail__close:hover .movieDetail__close-icon {
-    border-color: rgba(255, 255, 255, 1);
+    border-color: var(--main-white);
     transform: scale(1.05);
   }
 
@@ -74,11 +74,9 @@
     flex-direction: column;
     order: 2;
     padding: 2rem 3rem;
-
     .movieDetail__actions {
       order: 1;
       margin-bottom: 2rem;
-
       .movieDetail__btn-fav,
       .movieDetail__btn-delete {
         background: var(--nav-text);
@@ -113,7 +111,7 @@
         cursor: default;
 
         &:hover {
-          color: rgba(255, 255, 255, 1);
+          color: var(--main-white);
         }
       }
     }

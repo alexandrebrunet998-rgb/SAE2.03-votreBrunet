@@ -115,3 +115,40 @@
     font-family: var(--nav-font);
   }
 }
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--nav-font);
+
+  .page__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .page__accueil {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    min-width: 200px;
+    text-align: center;
+    color: var(--nav-text);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: 2px solid var(--nav-text);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--nav-hover);
+      transform: scale(1.05);
+    }
+  }
+}
