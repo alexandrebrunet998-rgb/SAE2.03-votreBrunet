@@ -97,28 +97,27 @@ Type de données : Le type idéal ici est un TINYINT(1) ou BOOLEAN. Cela permet 
 
 
 
-cardinalite 
-. Les Cardinalités (Modèle Conceptuel de Données - MCD)
-Il y a trois entités principales dans ta base (MOVIE, CATEGORY, PROFILE) reliées par deux associations :
+CARDINALITE 
+Entre Movie (Film) et Category (Genre)
+Lien : (1,1) et (0,n)
 
-A. La relation entre MOVIE et CATEGORY (L'appartenance)
+Côté Movie (1,1) :  
 
-Un Film appartient à une et une seule Catégorie.
+J'ai choisi la cardinalité (1,1) car, dans le cadre de cette application, chaque film doit obligatoirement être classé dans une catégorie pour faciliter la navigation, et il ne peut appartenir qu'à un seul genre principal afin d'éviter les doublons dans l'affichage. 
 
-Cardinalité : (1,1) du côté de MOVIE (Note : techniquement, ton SQL autorise NULL, donc on pourrait dire (0,1), mais dans la logique métier, un film a forcément une catégorie).
+Côté Category (0,n) :  
 
-Une Catégorie peut contenir zéro ou plusieurs Films.
+J'ai choisi la cardinalité (0,n) car une catégorie peut exister dans la base sans encore avoir de films associés (par exemple, une nouvelle catégorie "Western" vide), ou à l'inverse, contenir une liste illimitée de films. 
 
-Cardinalité : (0,n) du côté de CATEGORY.
+2. Entre PROFILE (Utilisateur) et Movie (via FAVORIS)
+Lien : (0,n) et (0,n)
 
-B. La relation entre PROFILE et MOVIE (Les Favoris)
+Côté PROFILE (0,n) : 
+ J'ai choisi la cardinalité (0,n) car un utilisateur qui vient de créer son compte n'a pas encore forcément de favoris (0), mais il doit pouvoir en ajouter autant qu'il le souhaite au fil du temps (n). 
 
-Un Profil peut ajouter aux favoris zéro ou plusieurs Films.
+Côté Movie (0,n) : 
 
-Cardinalité : (0,n) du côté de PROFILE.
+ J'ai choisi la cardinalité (0,n) car un film peut être très populaire et figurer dans les listes de nombreux profils (n), ou au contraire n'être encore présent dans aucun favori s'il vient d'être ajouté au catalogue (0). 
 
-Un Film peut être mis en favori par zéro ou plusieurs Profils.
 
-Cardinalité : (0,n) du côté de MOVIE.
-
-Conséquence : Comme on a (0,n) des deux côtés, cela crée obligatoirement une table de liaison (ta table FAVORIS).
+et le lopping est dans un fichier dans les images /server/images/looping

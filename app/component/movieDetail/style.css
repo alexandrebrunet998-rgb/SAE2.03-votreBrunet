@@ -52,9 +52,9 @@
     justify-content: center;
     width: 2.75rem;
     height: 2.75rem;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--black-90);
     border-radius: 50%;
-    border: 0.125rem solid rgba(255, 255, 255, 0.4);
+    border: 0.125rem solid var(--white-40);
     color: var(--nav-text);
     transition: all 0.3s ease;
 
@@ -90,7 +90,7 @@
         transition: background 0.3s;
 
         &:hover {
-          background: #e6e6e6;
+          background: var(--light-gray);
         }
       }
     }
@@ -106,7 +106,7 @@
 
       .movieDetail__text {
         line-height: 1.6;
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--white-70);
         transition: color 0.3s ease;
         cursor: default;
 
@@ -124,7 +124,7 @@
       gap: 0.25rem;
 
       .movieDetail__label {
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--nav-text-muted);
         font-size: 0.9rem;
         font-weight: 400;
         text-transform: uppercase;

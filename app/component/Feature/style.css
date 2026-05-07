@@ -5,7 +5,7 @@
   justify-content: center;
   width: 100%;
   padding: 4rem;
-  background: radial-gradient(circle at center, #222222 0%, var(--nav-bg) 100%);
+  background: radial-gradient(circle at center, var(--dark-gradient-2) 0%, var(--nav-bg) 100%);
   font-family: var(--nav-font);
   overflow: hidden;
 
@@ -36,13 +36,13 @@
       height: 30rem;
       object-fit: cover;
       border-radius: 0.5rem;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0.5rem 1rem var(--black-50);
       transition: all 0.3s ease;
 
       &:hover {
         transform: translateY(-1rem) scale(1.01);
-        box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.8), 
-                    0 0.5rem 1.5rem rgba(255, 255, 255, 0.1);
+        box-shadow: 0 1.5rem 2.5rem var(--black-80), 
+                    0 0.5rem 1.5rem var(--white-10);
         filter: brightness(1.1);
       }
     }
@@ -63,7 +63,7 @@
     transition: all 0.3s ease;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.103);
+      background: var(--white-10);
     }
 
     &.Feature__arrow--left {
@@ -91,19 +91,74 @@
     .Feature__dot {
       width: 0.4rem;
       height: 0.4rem;
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: var(--white-30);
       border-radius: 50%;
       cursor: pointer;
       transition: all 0.3s ease;
 
       &.Feature__dot--active {
-        background-color: #ffffff;
+        background-color: var(--nav-text);
         width: 0.5rem;
         height: 0.5rem;
       }
     }
   }
   
+}
+
+@media (max-width: 48rem) {
+  .Feature {
+    padding: 1rem;
+
+    .Feature__list {
+      gap: 1rem;
+    }
+
+    .Feature__item {
+      min-width: 90vw;
+
+      .Feature__cover {
+        height: 15rem;
+        border-radius: 0.3rem;
+
+        &:hover {
+          transform: translateY(-0.5rem) scale(1.01);
+        }
+      }
+    }
+
+    .Feature__arrow {
+      width: 2.5rem;
+      height: 2.5rem;
+
+      &.Feature__arrow--left {
+        left: 0.5rem;
+      }
+
+      &.Feature__arrow--right {
+        right: 0.5rem;
+      }
+
+      .Feature__arrow-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    .Feature__pagination {
+      bottom: 1rem;
+
+      .Feature__dot {
+        width: 0.3rem;
+        height: 0.3rem;
+
+        &.Feature__dot--active {
+          width: 0.4rem;
+          height: 0.4rem;
+        }
+      }
+    }
+  }
 }
 
 

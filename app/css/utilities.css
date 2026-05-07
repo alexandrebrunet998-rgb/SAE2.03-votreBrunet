@@ -1,5 +1,5 @@
 .font-sans {
   --nav-font: var(--ff-sans);
-    background: radial-gradient(circle at center, #1a1a1a 0%, var(--nav-bg) 100%);
+    background: radial-gradient(circle at center, var(--dark-gradient-1) 0%, var(--nav-bg) 100%);
 
 }

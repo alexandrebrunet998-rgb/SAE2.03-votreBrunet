@@ -6,4 +6,16 @@
   --nav-hover: rgba(126, 122, 122, 0.993); 
   --nav-font: 'roboto', sans-serif;
   --main-white: rgba(255, 255, 255, 1);
+  --nav-text-muted: rgba(255, 255, 255, 0.5);
+  --dark-gradient-1: #1a1a1a;
+  --dark-gradient-2: #222222;
+  --light-gray: #e6e6e6;
+  --white-10: rgba(255, 255, 255, 0.1);
+  --white-20: rgba(255, 255, 255, 0.2);
+  --white-30: rgba(255, 255, 255, 0.3);
+  --white-40: rgba(255, 255, 255, 0.4);
+  --white-70: rgba(255, 255, 255, 0.7);
+  --black-50: rgba(0, 0, 0, 0.5);
+  --black-80: rgba(0, 0, 0, 0.8);
+  --black-90: rgba(0, 0, 0, 0.9);
 }

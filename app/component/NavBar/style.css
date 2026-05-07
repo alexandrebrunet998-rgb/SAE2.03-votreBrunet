@@ -4,7 +4,7 @@
   justify-content: space-between;
   min-height: 5.5rem;
   padding: 3rem 5rem;
-  background: radial-gradient(circle at center, #1a1a1a 0%, var(--nav-bg) 100%);
+  background: radial-gradient(circle at center, var(--dark-gradient-1) 0%, var(--nav-bg) 100%);
   color: var(--nav-text);
   font-family: var(--nav-font);
 
@@ -98,7 +98,7 @@
   align-items: center;
   justify-content: center;
   min-height: 75vh;
-  background: radial-gradient(circle at center, #222222 0%, var(--nav-bg) 100%);
+  background: radial-gradient(circle at center, var(--dark-gradient-2) 0%, var(--nav-bg) 100%);
   font-family: var(--nav-font);
   color: var(--nav-text);
 
@@ -120,9 +120,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  padding: 0;
-  width: 100%;
   min-height: 100vh;
   font-family: var(--nav-font);
 
@@ -130,11 +127,9 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    align-items: center;
   }
 
   .page__accueil {
-    display: inline-block;
     padding: 1rem 2.5rem;
     min-width: 200px;
     text-align: center;
@@ -151,4 +146,64 @@
       transform: scale(1.05);
     }
   }
+}
+
+@media (max-width: 48rem) {
+  .navbar {
+    flex-wrap: wrap;
+    min-height: 2.5rem;
+    padding: 0.5rem 0.8rem;
+
+    .navbar__list {
+      gap: 0.5rem;
+      font-size: 0.7rem;
+    }
+
+    .navbar__logo-container {
+      margin-right: 0.3rem;
+      .navbar__logo {
+        height: 0.9rem;
+      }
+    }
+
+    .navbar__item-home,
+    .navbar__item-deconnexion {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.7rem;
+      &:hover {
+        padding-bottom: 0.1rem;
+        padding-top: 0.1rem;
+      }
+    }
+
+    .navbar__item {
+      gap: 0.3rem;
+
+      #navbar__select {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.65rem;
+        border: 0.8px solid var(--nav-text);
+      }
+
+      .navbar__btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.65rem;
+        border: 0.8px solid var(--nav-text);
+      }
+    }
+  }
+
+  .star {
+    min-height: 40vh;
+
+    .star__titre {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .star__txt {
+      font-size: 0.75rem;
+    }
+  }
+
 }

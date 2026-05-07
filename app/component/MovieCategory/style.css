@@ -5,7 +5,7 @@
   padding: 1rem 5rem; 
   font-family: var(--nav-font);
   color: var(--nav-text);
-  background: radial-gradient(circle at center, #1a1a1a 0%, var(--nav-bg) 100%);
+  background: radial-gradient(circle at center, var(--dark-gradient-1) 0%, var(--nav-bg) 100%);
   gap: 0.5rem; 
 
   .MovieCategoryName {
@@ -19,7 +19,7 @@
     align-items: center;
     gap: 0.6rem;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--nav-text-muted);
     font-weight: 700;
     font-size: 1.1rem;
     opacity: 0;
@@ -32,7 +32,7 @@
       justify-content: center;
       width: 1.3rem;
       height: 1.3rem;
-      border: 2px solid rgba(255, 255, 255, 0.5);
+      border: 2px solid var(--nav-text-muted);
       border-radius: 50%;
 
       .movieCategory__svg {
@@ -43,7 +43,7 @@
     }
     
     &:hover .movieCategory__view-all-icon {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--white-10);
     }
   }
 
